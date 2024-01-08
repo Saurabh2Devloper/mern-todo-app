@@ -10,11 +10,13 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection (assuming local)
-mongoose.connect('mongodb+srv://saurabhmhatre:saurabhmhatre@cluster0.cmxgmkz.mongodb.net/todos?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+const connection=mongoose.connect('mongodb+srv://saurabhmhatre:saurabhmhatre@cluster0.cmxgmkz.mongodb.net/todos?retryWrites=true&w=majority', {
+
 });
 
+if(connection){
+  console.log("Connected to MongoDB !")
+}
 const todoSchema = new mongoose.Schema({
   title: String,
   description: String,
